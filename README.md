@@ -1,5 +1,5 @@
 # README
-This repo is meant to assist in the troubleshooting of a GKE ingress controller issue.
+This repo is meant to assist in the troubleshooting of a GKE ingress controller issue. It will take building the dockerfile, placing it into a repository, and updating deplyment files to work.
 
 ## Issue
 Why would I experience downtime when I update more than one backend service at a time, but not when I updated a single backend? (Does it have something to do with the fact that the ingress no longer references the `app-z` backend?)
