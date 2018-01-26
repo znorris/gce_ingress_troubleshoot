@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: app-a
+  namespace: development
+  labels:
+    app: app-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-a
+  template:
+    metadata:
+      labels:
+        app: app-a
+    spec:
+      containers:
+      - name: python
+        image: lb_test:1
+        ports:
+          - name: http
+            containerPort: 5000
+            protocol: TCP
+        readinessProbe: # Determines when container recieves traffic
+            periodSeconds: 10
+            timeoutSeconds: 2
+            httpGet:
+              path: /healthz
+              port: http
